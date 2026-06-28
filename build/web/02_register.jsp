@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register ? Campus Lost &amp; Found Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4efe4;
+    --card: #fbf8ef;
+    --ink: #181715;
+    --ink-2: #4a463f;
+    --ink-3: #8a857a;
+    --rule: #d6cfbe;
+    --rule-2: #c5bca6;
+    --accent: #8b2e2a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif; color: var(--ink);
+    background:
+      radial-gradient(circle at 15% -10%, #ece5d2 0%, transparent 45%),
+      radial-gradient(circle at 100% 100%, #e8e0cc 0%, transparent 50%),
+      var(--paper);
+    background-attachment: fixed; line-height: 1.55; font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1080px; margin: 0 auto; padding: 32px 48px 64px; min-height: 100vh; }
+  .masthead {
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 2px solid var(--ink); padding-bottom: 14px; margin-bottom: 8px;
+  }
+  .masthead .title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 28px; letter-spacing: -0.01em; line-height: 1; }
+  .masthead .title i { font-style: italic; font-weight: 400; color: var(--accent); }
+  .masthead .ref { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-2); letter-spacing: 0.1em; text-transform: uppercase; }
+  .masthead .ref b { color: var(--ink); }
+  .submast {
+    display: flex; justify-content: space-between; padding: 8px 0 28px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3);
+    border-bottom: 1px solid var(--rule); margin-bottom: 40px;
+  }
+  .back-link {
+    font-family: 'JetBrains Mono', monospace; text-transform: uppercase;
+    letter-spacing: 0.12em; font-size: 11px; color: var(--ink-2);
+    text-decoration: none; margin-bottom: 18px; display: inline-block;
+  }
+  .back-link:hover { color: var(--accent); }
+  h1.page-title {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 56px; line-height: 1; letter-spacing: -0.025em; margin: 0 0 12px 0;
+  }
+  h1.page-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+  .page-lede {
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 18px;
+    color: var(--ink-2); max-width: 56ch; margin: 0 0 40px 0;
+  }
+  .form-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px 28px;
+    max-width: 720px;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group.span-2 { grid-column: 1 / -1; }
+  label { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.12em; font-size: 10.5px; color: var(--ink-3); font-weight: 500; }
+  input[type=text], input[type=email], input[type=password], input[type=tel], select {
+    font: inherit; font-size: 16px; color: var(--ink);
+    background: transparent; border: 0; border-bottom: 1px solid var(--ink-2);
+    border-radius: 0; padding: 8px 2px; width: 100%; font-family: 'Inter', sans-serif;
+  }
+  select {
+    appearance: none; -webkit-appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--ink) 50%),
+      linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+    background-position: calc(100% - 12px) 18px, calc(100% - 7px) 18px;
+    background-size: 6px 6px, 6px 6px; background-repeat: no-repeat;
+    padding-right: 28px;
+  }
+  input:focus, select:focus { outline: none; border-bottom-color: var(--accent); }
+  .checkbox-group { display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; text-transform: none; letter-spacing: 0; color: var(--ink-2); font-size: 14px; font-weight: 400; }
+  .checkbox-group input { accent-color: var(--accent); width: auto; }
+  button {
+    font: inherit; font-size: 13px; font-weight: 500;
+    padding: 12px 22px; background: var(--ink); color: var(--paper);
+    border: 1px solid var(--ink); cursor: pointer; border-radius: 0;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    font-family: 'JetBrains Mono', monospace;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  button:hover { background: var(--accent); border-color: var(--accent); }
+  .actions { margin-top: 36px; display: flex; align-items: center; gap: 20px; }
+  .links { margin-top: 28px; font-size: 13px; color: var(--ink-2); }
+  .links a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+  .links a:hover { color: var(--accent); }
+
+  @media (max-width: 760px) {
+    .container { padding: 24px 22px 48px; }
+    h1.page-title { font-size: 38px; }
+    .form-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="masthead">
+    <div class="title">Campus Lost <i>&amp;</i> Found Ledger</div>
+    <div class="ref">Est. <b>2025</b> &nbsp;·&nbsp; File <b>02 / 06</b></div>
+  </header>
+  <div class="submast">
+    <span>Volume I &nbsp;?&nbsp; Enrolment</span>
+    <span>New entrant</span>
+  </div>
+
+  <a href="01_login.jsp" class="back-link">? Back to sign in</a>
+
+  <h1 class="page-title">Create an <em>account</em>.</h1>
+  <p class="page-lede">A short registration. You'll use this identity to file reports, claim items, and receive verification codes.</p>
+
+  <form action="RegisterServlet" method="post">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="fname">First name</label>
+        <input type="text" id="fname" name="fname" required>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last name</label>
+        <input type="text" id="lname" name="lname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="student_id">Student / Staff ID</label>
+        <input type="text" id="student_id" name="student_id" placeholder="S12345678" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="+60 ___ ____ ___">
+      </div>
+
+      <div class="form-group span-2">
+        <label for="email">University email</label>
+        <input type="email" id="email" name="email" placeholder="yourname@student.edu.my" required>
+      </div>
+
+      <div class="form-group span-2">
+        <label for="department">Faculty / Department</label>
+        <select id="department" name="department" required>
+          <option>Computer Science &amp; IT</option>
+          <option>Engineering</option>
+          <option>Business Administration</option>
+          <option>Social Sciences</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirm">Confirm password</label>
+        <input type="password" id="confirm" name="confirm" required>
+      </div>
+
+      <div class="form-group span-2" style="margin-top: 6px;">
+        <label class="checkbox-group">
+          <input type="checkbox" required checked>
+          I agree to the Terms of Use and Privacy Policy.
+        </label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit">Register &nbsp;?</button>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-3);letter-spacing:0.12em;text-transform:uppercase;">Required fields marked by absence of "optional"</span>
+    </div>
+  </form>
+
+  <div class="links">
+    Already have an account? <a href="01_login.jsp">Sign in</a>.
+  </div>
+</div>
+</body>
+</html>
